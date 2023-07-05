@@ -1,6 +1,6 @@
 <?php
 
-$config = [
-    'APP_NAME' => 'PHP MVC',
-    'APP_FOLDER_NAME' => 'mvc'
+return [
+    'name' => 'PHP MVC',
+    'folder_name' => 'mvc'
 ];

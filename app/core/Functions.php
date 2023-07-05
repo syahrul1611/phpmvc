@@ -3,12 +3,14 @@
 /**
  * Calling configuration.
  * @param string $key Name of Config.
- * @return any Value of Config.
+ * @return string|array|int Value of Config.
  */
 function config($key)
 {
-    include '../app/config/app.php';
-    return $config[$key];
+    $file = explode('.',$key)[1];
+    $key = explode('.',$key)[0];
+    $array = include '../app/config/'.$file.'.php';
+    return $array[$key];
 }
 
 /**
@@ -25,5 +27,5 @@ function asset($path)
         isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
         $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https'
     ){ $protocol = 'https://'; }else{ $protocol = 'http://'; }
-    return $protocol.$_SERVER['HTTP_HOST'].'/'.config('APP_FOLDER_NAME').'/public/'.$path;
+    return $protocol.$_SERVER['HTTP_HOST'].'/'.config('folder_name.app').'/public/'.$path;
 }
