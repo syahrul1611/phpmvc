@@ -7,7 +7,7 @@
  */
 function config($key)
 {
-    $config = require_once '../app/config/app.php';
+    include '../app/config/app.php';
     return $config[$key];
 }
 
